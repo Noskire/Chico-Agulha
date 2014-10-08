@@ -40,26 +40,26 @@ public class ChicoScript : MonoBehaviour {
 			transform.localScale = new Vector3(1f, 1f, 1f);	
 			eixoX = 1;
 		}
-		transform.Translate(impulso * eixoX, impulso * eixoY, 0);
-		float f = 4.5f;
+		transform.Translate(impulso * eixoX, impulso * eixoY / 2, 0);
+		float f = 5f;
 		var pos = transform.position;
 		//Limitadores
-		/*if(pos.x < -f){
+		if(pos.x < -f){
 			pos.x = -f;
 		}
 		if(pos.x > f){
 			pos.x = f;
 		}
-		if(pos.y < -0.6f){
-			pos.y = -0.6f;
+		if(pos.y < -0.55f){
+			pos.y = -0.55f;
 		}
-		if(pos.y > 1.5f){
-			pos.y = 1.5f;
-		}*/
+		if(pos.y > 1.55f && !pulando){
+			pos.y = 1.55f;
+		}
 		if(eixoX != 0 || eixoY != 0){
-			animator.SetFloat ("Speed", impulso);
+			animator.SetFloat("Speed", impulso);
 		}else{
-			animator.SetFloat ("Speed", 0);
+			animator.SetFloat("Speed", 0);
 		}
 		//Pulo
 		if(Input.GetKeyDown(KeyCode.Space) && !pulando){
