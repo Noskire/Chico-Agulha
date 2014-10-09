@@ -8,13 +8,13 @@ public class HealthScript : MonoBehaviour {
 
 	void Start(){ //Use this for initialization
 		animator = GetComponent<Animator>();
+		//animator = this.transform.parent.GetComponent<Animator>();
 	}
 
 	public void Damage(int damageCount){
 		hp -= damageCount;
-		if(hp <= 0){
+		if(hp <= 0){ //Dead!
 			animator.SetBool("Dead", true);
-			//Dead!
 			Destroy(gameObject, 5);
 		}
 	}
@@ -25,6 +25,9 @@ public class HealthScript : MonoBehaviour {
 		if(shot != null){
 			//Avoid friendly fire
 			if(shot.isEnemyShot != isEnemy){
+				if(hp > 0){
+					animator.SetBool("Hit", true);
+				}
 				Damage(shot.damage);
 				Destroy(shot.gameObject); //Destroy the shot
 			}
