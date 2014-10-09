@@ -5,7 +5,7 @@ public class ChicoScript : MonoBehaviour {
 	public float maxSpeed;
 	public float maxImpulse;
 	public float gravidade;
-	public Animator animator;
+	private Animator animator;
 	int eixoX, eixoY;
 	float impulso, velocidade, yInicial;
 	bool pulando;
@@ -50,9 +50,9 @@ public class ChicoScript : MonoBehaviour {
 		if(pos.x > f){
 			pos.x = f;
 		}
-		if(pos.y < -0.55f){
+		/*if(pos.y < -0.55f){
 			pos.y = -0.55f;
-		}
+		}*/
 		if(pos.y > 1.55f && !pulando){
 			pos.y = 1.55f;
 		}
@@ -94,5 +94,9 @@ public class ChicoScript : MonoBehaviour {
 	
 	void FixedUpdate(){ //Update com alta prioridade, como colisao
 		
+	}
+
+	void OnTriggerEnter(Collider other){
+		animator.SetBool("Hit", true);
 	}
 }
