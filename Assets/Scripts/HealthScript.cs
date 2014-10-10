@@ -25,10 +25,12 @@ public class HealthScript : MonoBehaviour {
 		if(shot != null){
 			//Avoid friendly fire
 			if(shot.isEnemyShot != isEnemy){
-				if(hp > 0){
-					animator.SetBool("Hit", true);
+				if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Defend")){ //Not blocking
+					if(hp > 0){
+						animator.SetBool("Hit", true);
+					}
+					Damage(shot.damage);
 				}
-				Damage(shot.damage);
 				Destroy(shot.gameObject); //Destroy the shot
 			}
 		}

@@ -94,11 +94,30 @@ public class PlayerScript : MonoBehaviour{
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")){
 			animator.SetBool("Dead", false);
 		}
+		EnforceBounds();
 	}
 	
 	void FixedUpdate(){
 		//Move the game object
 		rigidbody2D.velocity = movement * Time.deltaTime;
+	}
+
+	private void EnforceBounds(){
+		Vector3 newPosition = transform.position;
+		Camera mainCamera = Camera.main;
+		Vector3 cameraPosition = mainCamera.transform.position;
+		
+		float xDist = mainCamera.aspect * mainCamera.orthographicSize - 0.5f;
+		float xMax = cameraPosition.x + xDist;
+		float xMin = cameraPosition.x - xDist;
+		
+		if ( newPosition.x < xMin || newPosition.x > xMax ) {
+			newPosition.x = Mathf.Clamp( newPosition.x, xMin, xMax );
+			movement.x = -movement.x;
+		}
+		//TODO vertical bounds
+		
+		transform.position = newPosition;
 	}
 
 	/*void OnCollisionEnter2D(Collision2D collision){
