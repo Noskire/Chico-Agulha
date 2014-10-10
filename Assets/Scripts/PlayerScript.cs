@@ -84,6 +84,8 @@ public class PlayerScript : MonoBehaviour{
 				Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
 				Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
 				transform.position.z);*/
+		}else{
+			movement = new Vector2(0, 0);
 		}
 		//Disable Hurt and Dead Animation
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")){
