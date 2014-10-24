@@ -5,6 +5,7 @@ public class WeaponScript : MonoBehaviour{
 	public float shootingRate = 0.25f;
 	public bool toTheRight = true;
 	private float shootCooldown;
+    //TEste
 	
 	void Start(){
 		shootCooldown = 0f;
