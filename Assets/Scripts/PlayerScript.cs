@@ -110,9 +110,9 @@ public class PlayerScript : MonoBehaviour{
 		float xDist = mainCamera.aspect * mainCamera.orthographicSize - 0.5f;
 		float xMax = cameraPosition.x + xDist;
 		float xMin = cameraPosition.x - xDist;
-		
-		if ( newPosition.x < xMin || newPosition.x > xMax ) {
-			newPosition.x = Mathf.Clamp( newPosition.x, xMin, xMax );
+
+		if(newPosition.x < xMin || newPosition.x > xMax){
+			newPosition.x = Mathf.Clamp(newPosition.x, xMin, xMax);
 			movement.x = -movement.x;
 		}
 		//TODO vertical bounds

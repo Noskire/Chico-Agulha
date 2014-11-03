@@ -1,20 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealthScript : MonoBehaviour {
-	public int hp;
+public class HealthScript : MonoBehaviour{
+	public float hp;
+	private float maxHP;
 	public bool isEnemy;
 	private Animator animator;
 
 	void Start(){ //Use this for initialization
+		maxHP = hp;
 		animator = GetComponent<Animator>();
 		//animator = this.transform.parent.GetComponent<Animator>();
 	}
 
-	public void Damage(int damageCount){
+	void Update(){
+		if(hp < 0){
+			hp = 0;
+		}else if(hp > maxHP){
+			hp = maxHP;
+		}
+	}
+
+	public void Damage(float damageCount){
 		hp -= damageCount;
 		if(hp <= 0){ //Dead!
 			animator.SetBool("Dead", true);
+			gameObject.rigidbody2D.isKinematic = true;
 			Destroy(gameObject, 5);
 		}
 	}
