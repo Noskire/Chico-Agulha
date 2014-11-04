@@ -1,0 +1,11 @@
+F:\github\Chico-Agulha\Temp\bin\Debug\Assembly-CSharp.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\Assembly-CSharp.pdb
+F:\github\Chico-Agulha\Temp\bin\Debug\UnityEditor.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\UnityEngine.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\Mono.Cecil.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\nunit.framework.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\Unity.DataContract.dll
+F:\github\Chico-Agulha\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+F:\github\Chico-Agulha\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+F:\github\Chico-Agulha\obj\Debug\Assembly-CSharp.dll
+F:\github\Chico-Agulha\obj\Debug\Assembly-CSharp.pdb
