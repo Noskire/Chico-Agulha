@@ -22,11 +22,13 @@ public class HealthScript : MonoBehaviour{
 	}
 
 	public void Damage(float damageCount){
-		hp -= damageCount;
-		if(hp <= 0){ //Dead!
-			animator.SetBool("Dead", true);
-			gameObject.rigidbody2D.isKinematic = true;
-			Destroy(gameObject, 5);
+		if(hp > 0){
+			hp -= damageCount;
+			if(hp <= 0){ //Dead!
+				animator.SetBool("Dead", true);
+				gameObject.rigidbody2D.isKinematic = true;
+				Destroy(gameObject, 5);
+			}
 		}
 	}
 

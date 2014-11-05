@@ -5,6 +5,10 @@ public class PlayerScript : MonoBehaviour{
 	public Vector2 speed = new Vector2(25, 25);
 	public float impulse;
 	public float gravity;
+	public float attackTimer;
+	public float cooldown;
+	public GameObject target;
+
 	private bool jumping = false;
 	private float velocity, yInitial;
 	private Vector2 movement;
@@ -56,23 +60,37 @@ public class PlayerScript : MonoBehaviour{
 			}
 			transform.position = pos;
 			//Attack
-			bool shoot = Input.GetButtonDown("Fire1");
+			bool meleeAttack = Input.GetButtonDown("Fire1");
+			if(attackTimer > 0){
+				attackTimer--;
+			}
+			if(meleeAttack){
+				if(attackTimer <= 0){
+					attackTimer = cooldown;
+					animator.SetBool("Attacking", true);
+					Attack();
+				}
+			}else{
+				animator.SetBool("Attacking", false);
+			}
+			//Block
+			bool inputB = Input.GetButton("Fire2");
+			if(inputB){
+				animator.SetBool("Defending", true);
+			}else{
+				animator.SetBool("Defending", false);
+			}
+			//Shoot
+			bool shoot = Input.GetButtonDown("Fire3");
 			if(shoot){
-				animator.SetBool("Attacking", true);
+				//animator.SetBool("Attacking", true);
 				WeaponScript weapon = GetComponentInChildren<WeaponScript>();
 				if(weapon != null && weapon.CanAttack){
 					//false because the player is not an enemy
 					weapon.Attack(false);
 				}
 			}else{
-				animator.SetBool("Attacking", false);
-			}
-			//Block
-			bool inputB = Input.GetButton("Fire3");
-			if(inputB){
-				animator.SetBool("Defending", true);
-			}else{
-				animator.SetBool("Defending", false);
+				//animator.SetBool("Attacking", false);
 			}
 			//Bounds
 			/*var dist = (transform.position - Camera.main.transform.position).z;
@@ -102,6 +120,21 @@ public class PlayerScript : MonoBehaviour{
 		rigidbody2D.velocity = movement * Time.deltaTime;
 	}
 
+	private void Attack(){
+		bool targetBehind;
+		float distance = Vector3.Distance(target.transform.position, transform.position);
+		if(transform.position.x < target.transform.position.x && transform.localScale.x == 1 ||
+		   transform.position.x > target.transform.position.x && transform.localScale.x == -1){
+			targetBehind = false; //Chico is facing the target
+		}else{
+			targetBehind = true;
+		}
+		if(distance <= 1.4 && !targetBehind){
+			HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
+			eh.Damage(5);
+		}
+	}
+	
 	private void EnforceBounds(){
 		Vector3 newPosition = transform.position;
 		Camera mainCamera = Camera.main;
@@ -116,7 +149,7 @@ public class PlayerScript : MonoBehaviour{
 			movement.x = -movement.x;
 		}
 		//TODO vertical bounds
-		
+
 		transform.position = newPosition;
 	}
 

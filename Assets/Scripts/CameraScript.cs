@@ -12,8 +12,8 @@ public class CameraScript : MonoBehaviour{
 	void Update(){
 		Vector3 newPosition;
 		if(target != null){
-			transform.LookAt(target.transform);
 			newPosition = target.transform.position + positionOffset;
+			newPosition.y = 0;
 			transform.position = newPosition;
 		}
 	}

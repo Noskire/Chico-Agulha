@@ -2,18 +2,82 @@
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour{
+	public Transform target;
+	public float attackTimer;
+	public float cooldown;
+	public float speed;
+	public Vector3 movement = new Vector3(0f, 0f, 0f);
+
 	private Animator animator;
 	private HealthScript health;
 	private WeaponScript[] weapons;
+	private WeaponScript weapon;
+	private Transform myTransform;
 
 	void Awake(){
 		animator = GetComponent<Animator>();
 		health = GetComponent<HealthScript>();
 		weapons = GetComponentsInChildren<WeaponScript>();
+		weapon = GetComponent<WeaponScript>();
+		myTransform = transform;
 	}
-	
+
+	void Start(){
+		GameObject go = GameObject.FindGameObjectWithTag("Player");
+		target = go.transform;
+	}
+
 	void Update(){
+		Debug.DrawLine(target.position, myTransform.position, Color.blue);
+		//Find quadrant of target
+		//x
+		if(target.position.x < myTransform.position.x - 1){
+			movement.x = -1;
+		}else if(target.position.x > myTransform.position.x + 1){
+			movement.x = 1;
+		}else{
+			movement.x = 0;
+		}
+		//y
+		if(target.position.y < myTransform.position.y - 1){
+			movement.y = -1;
+		}else if(target.position.y > myTransform.position.y + 1){
+			movement.y = 1;
+		}else{
+			movement.y = 0;
+		}
+
 		if(health.hp > 0){
+			//Look at target
+			if(movement.x == 1){
+				transform.localScale = new Vector3(1f, 1f, 1f);
+				weapon.toTheRight = true;
+			}else if(movement.x == -1){
+				transform.localScale = new Vector3(-1f, 1f, 1f);
+				weapon.toTheRight = false;
+			}
+			//Move towards target
+			myTransform.position += movement * speed * Time.deltaTime;
+			//Melee Attack
+			if(attackTimer > 0){
+				attackTimer--;
+			}
+			bool playerBehind;
+			if(myTransform.position.x < target.position.x && myTransform.localScale.x == 1 ||
+			   myTransform.position.x > target.position.x && myTransform.localScale.x == -1){
+				playerBehind = false; //Enemy is facing Chico
+			}else{
+				playerBehind = true;
+			}
+			float distance = Vector3.Distance(target.position, myTransform.position);
+			if(distance <= 1.4 && attackTimer <= 0){
+				attackTimer = cooldown;
+				animator.SetBool("Attacking", true);
+				HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
+				eh.Damage(5);
+			}else{
+				animator.SetBool("Attacking", false);
+			}
 			//Auto-fire
 			foreach(WeaponScript weapon in weapons){
 				//Auto-fire
