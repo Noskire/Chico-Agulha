@@ -23,11 +23,14 @@ public class HealthScript : MonoBehaviour{
 
 	public void Damage(float damageCount){
 		if(hp > 0){
+			animator.SetBool("Hit", true);
 			hp -= damageCount;
 			if(hp <= 0){ //Dead!
 				animator.SetBool("Dead", true);
 				gameObject.rigidbody2D.isKinematic = true;
 				Destroy(gameObject, 5);
+				//Add exp of enemy to player
+				GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().addExp(gameObject.GetComponent<EnemyScript>().experience);
 			}
 		}
 	}
@@ -39,9 +42,9 @@ public class HealthScript : MonoBehaviour{
 			//Avoid friendly fire
 			if(shot.isEnemyShot != isEnemy){
 				if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Defend")){ //Not blocking
-					if(hp > 0){
+					/*if(hp > 0){
 						animator.SetBool("Hit", true);
-					}
+					}*/
 					Damage(shot.damage);
 				}
 				Destroy(shot.gameObject); //Destroy the shot

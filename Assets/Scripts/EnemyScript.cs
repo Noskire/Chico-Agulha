@@ -6,6 +6,9 @@ public class EnemyScript : MonoBehaviour{
 	public float attackTimer;
 	public float cooldown;
 	public float speed;
+	public float experience = 10;
+	public float MeleeDamage = 10;
+	public float LongRangeDamage = 2.5f;
 	public Vector3 movement = new Vector3(0f, 0f, 0f);
 
 	private Animator animator;
@@ -28,7 +31,7 @@ public class EnemyScript : MonoBehaviour{
 	}
 
 	void Update(){
-		Debug.DrawLine(target.position, myTransform.position, Color.blue);
+		//Debug.DrawLine(target.position, myTransform.position, Color.blue);
 		//Find quadrant of target
 		//x
 		if(target.position.x < myTransform.position.x - 1){
@@ -62,19 +65,20 @@ public class EnemyScript : MonoBehaviour{
 			if(attackTimer > 0){
 				attackTimer--;
 			}
-			bool playerBehind;
+			/*bool playerBehind;
 			if(myTransform.position.x < target.position.x && myTransform.localScale.x == 1 ||
 			   myTransform.position.x > target.position.x && myTransform.localScale.x == -1){
 				playerBehind = false; //Enemy is facing Chico
 			}else{
 				playerBehind = true;
-			}
+			}*/
 			float distance = Vector3.Distance(target.position, myTransform.position);
+			//Is close and can attack
 			if(distance <= 1.4 && attackTimer <= 0){
 				attackTimer = cooldown;
 				animator.SetBool("Attacking", true);
 				HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
-				eh.Damage(5);
+				eh.Damage(MeleeDamage);
 			}else{
 				animator.SetBool("Attacking", false);
 			}
@@ -82,13 +86,14 @@ public class EnemyScript : MonoBehaviour{
 			foreach(WeaponScript weapon in weapons){
 				//Auto-fire
 				if(weapon != null && weapon.CanAttack){
-					weapon.Attack(true);
+					weapon.Attack(true, LongRangeDamage);
 				}
 			}
 		}
 		//Disable Hurt and Dead Animation
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")){
 			animator.SetBool("Hit", false);
+			attackTimer = cooldown; //Can't attack while being hit
 		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")){
 			animator.SetBool("Dead", false);

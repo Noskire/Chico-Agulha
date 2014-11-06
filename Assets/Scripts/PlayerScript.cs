@@ -5,23 +5,44 @@ public class PlayerScript : MonoBehaviour{
 	public Vector2 speed = new Vector2(25, 25);
 	public float impulse;
 	public float gravity;
+
 	public float attackTimer;
 	public float cooldown;
-	public GameObject target;
+	//public Transform target;
+
+	public float MeleeDamage = 10;
+	public float LongRangeDamage = 5;
 
 	private bool jumping = false;
 	private float velocity, yInitial;
 	private Vector2 movement;
+
 	private Animator animator;
 	private HealthScript health;
+	private ExperienceScript experience;
 	private WeaponScript weapon;
 
 	void Start(){
 		animator = GetComponent<Animator>();
 		weapon = GetComponent<WeaponScript>();
 		health = GetComponent<HealthScript>();
+		experience = GetComponent<ExperienceScript>();
 	}
-	
+
+	void OnGUI(){
+		//Background box
+		GUI.Box(new Rect(10,10,100,115), "Chico Agulha");
+		//HP
+		GUI.Label(new Rect(20,40,80,20), "HP: ");
+		GUI.Label(new Rect(75,40,80,20), health.hp.ToString());
+		//Level
+		GUI.Label(new Rect(20,70,80,20), "Level: ");
+		GUI.Label(new Rect(75,70,80,20), experience.level.ToString());
+		//Experience
+		GUI.Label(new Rect(20,100,80,20), "Exp.: ");
+		GUI.Label(new Rect(75,100,80,20), experience.exp.ToString());
+	}
+
 	void Update(){
 		if(health.hp > 0){
 			//Moviment
@@ -87,7 +108,7 @@ public class PlayerScript : MonoBehaviour{
 				WeaponScript weapon = GetComponentInChildren<WeaponScript>();
 				if(weapon != null && weapon.CanAttack){
 					//false because the player is not an enemy
-					weapon.Attack(false);
+					weapon.Attack(false, LongRangeDamage);
 				}
 			}else{
 				//animator.SetBool("Attacking", false);
@@ -121,17 +142,37 @@ public class PlayerScript : MonoBehaviour{
 	}
 
 	private void Attack(){
+		Transform enemy = null, target = null;
 		bool targetBehind;
-		float distance = Vector3.Distance(target.transform.position, transform.position);
+		float distance = 1000000, distEnemy;
+		//Get the closest enemy
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach(GameObject go in enemies){
+			if(go != null){
+				enemy = go.transform;
+				distEnemy = Vector3.Distance(enemy.transform.position, transform.position);
+				if(target == null){
+					target = enemy;
+					distance = distEnemy;
+				}else{
+					if(distEnemy < distance){
+						target = enemy;
+						distance = distEnemy;
+					}
+				}
+			}
+		}
+		//Verify if it is behind
 		if(transform.position.x < target.transform.position.x && transform.localScale.x == 1 ||
 		   transform.position.x > target.transform.position.x && transform.localScale.x == -1){
 			targetBehind = false; //Chico is facing the target
 		}else{
 			targetBehind = true;
 		}
+		//If close enough and is not behind, attack (Decreases target HP)
 		if(distance <= 1.4 && !targetBehind){
 			HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
-			eh.Damage(5);
+			eh.Damage(MeleeDamage);
 		}
 	}
 	
@@ -151,6 +192,10 @@ public class PlayerScript : MonoBehaviour{
 		//TODO vertical bounds
 
 		transform.position = newPosition;
+	}
+
+	public void addExp(float exp){
+		experience.gainExp(exp);
 	}
 
 	/*void OnCollisionEnter2D(Collision2D collision){

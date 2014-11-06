@@ -2,7 +2,7 @@
 
 public class WeaponScript : MonoBehaviour{
 	public Transform shotPrefab;
-	public float shotDamage;
+	//public float shotDamage;
 	public float shootingRate = 0.25f;
 	public bool toTheRight = true;
 	private float shootCooldown;
@@ -17,15 +17,15 @@ public class WeaponScript : MonoBehaviour{
 		}
 	}
 	
-	public void Attack(bool isEnemy){
+	public void Attack(bool isEnemy, float shotDamage){
 		if(CanAttack){
 			shootCooldown = shootingRate;
 			var shotTransform = Instantiate(shotPrefab) as Transform;
 			shotTransform.position = transform.position;
 
 			ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
-			shot.damage = shotDamage;
 			if(shot != null){
+				shot.damage = shotDamage;
 				shot.isEnemyShot = isEnemy;
 			}
 
