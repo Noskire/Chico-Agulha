@@ -162,17 +162,20 @@ public class PlayerScript : MonoBehaviour{
 				}
 			}
 		}
-		//Verify if it is behind
-		if(transform.position.x < target.transform.position.x && transform.localScale.x == 1 ||
-		   transform.position.x > target.transform.position.x && transform.localScale.x == -1){
-			targetBehind = false; //Chico is facing the target
-		}else{
-			targetBehind = true;
-		}
-		//If close enough and is not behind, attack (Decreases target HP)
-		if(distance <= 1.4 && !targetBehind){
-			HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
-			eh.Damage(MeleeDamage);
+		
+		if (target != null) {
+			//Verify if it is behind
+			if(transform.position.x < target.transform.position.x && transform.localScale.x == 1 ||
+				transform.position.x > target.transform.position.x && transform.localScale.x == -1){
+				targetBehind = false; //Chico is facing the target
+			}else{
+				targetBehind = true;
+			}
+			//If close enough and is not behind, attack (Decreases target HP)
+			if(distance <= 1.4 && !targetBehind){
+				HealthScript eh = (HealthScript)target.GetComponent("HealthScript");
+				eh.Damage(MeleeDamage);
+			}
 		}
 	}
 	
