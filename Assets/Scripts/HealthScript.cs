@@ -22,7 +22,7 @@ public class HealthScript : MonoBehaviour{
 	}
 
 	public void Damage(float damageCount){
-		if(hp > 0){
+		if(hp > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Defend")){
 			animator.SetBool("Hit", true);
 			hp -= damageCount;
 			if(hp <= 0){ //Dead!
@@ -41,12 +41,12 @@ public class HealthScript : MonoBehaviour{
 		if(shot != null){
 			//Avoid friendly fire
 			if(shot.isEnemyShot != isEnemy){
-				if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Defend")){ //Not blocking
+				//if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Defend")){ //Not blocking
 					/*if(hp > 0){
 						animator.SetBool("Hit", true);
 					}*/
 					Damage(shot.damage);
-				}
+				//}
 				Destroy(shot.gameObject); //Destroy the shot
 			}
 		}

@@ -33,7 +33,7 @@ public class EnemyScript : MonoBehaviour{
 
 	void Update(){
 		float dist = Vector3.Distance (target.position, myTransform.position);
-		if (dist <= maxDist) {
+		if(dist <= maxDist){
 			//Debug.DrawLine(target.position, myTransform.position, Color.blue);
 			//Find quadrant of target
 			//x
@@ -85,6 +85,21 @@ public class EnemyScript : MonoBehaviour{
 				}else{
 					animator.SetBool("Attacking", false);
 				}
+			}
+		}else{ //dist > maxDist
+			movement.x = 0;
+			//y
+			if(target.position.y < myTransform.position.y - 0.1){
+				movement.y = -1;
+			}else if(target.position.y > myTransform.position.y + 0.1){
+				movement.y = 1;
+			}else{
+				movement.y = 0;
+			}
+			//Move towards target
+			myTransform.position += movement * speed * Time.deltaTime;
+
+			if(health.hp > 0){
 				//Auto-fire
 				foreach(WeaponScript weapon in weapons){
 					//Auto-fire
