@@ -46,18 +46,28 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AbsEstadoPlayer.cs" />
+     <Compile Include="Assets\Scripts\AbsInimigo.cs" />
+     <Compile Include="Assets\Scripts\AbsPersonagem.cs" />
+     <Compile Include="Assets\Scripts\AbsPlayer.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\ChicoScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScript.cs" />
+     <Compile Include="Assets\Scripts\EnumEstado.cs" />
+     <Compile Include="Assets\Scripts\EstPlayerAgulhas.cs" />
+     <Compile Include="Assets\Scripts\EstPlayerBaladeira.cs" />
      <Compile Include="Assets\Scripts\ExperienceScript.cs" />
      <Compile Include="Assets\Scripts\HealthScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerEstadoException.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\RendererExtensionsScript.cs" />
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\ShotScript.cs" />
+     <Compile Include="Assets\Scripts\TutorialScript.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
