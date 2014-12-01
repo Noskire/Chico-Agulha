@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: a528d3089bf11654cac90d54c3440f3a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hit - Dead_0
+    21300002: Hit - Dead_1
+    21300004: Hit - Dead_2
+    21300006: Hit - Dead_3
+    21300008: Hit - Dead_4
+    21300010: Hit - Dead_5
+    21300012: Hit - Dead_6
+    21300014: Hit - Dead_7
+    21300016: Hit - Dead_8
+    21300018: Hit - Dead_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 300
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Hit - Dead_1
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1991
+        width: 641
+        height: 565
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_3
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1100
+        width: 494
+        height: 676
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_4
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 1100
+        width: 494
+        height: 676
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_5
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 24
+        width: 444
+        height: 659
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_6
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 0
+        width: 594
+        height: 608
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_7
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 66
+        width: 678
+        height: 290
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hit - Dead_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1936
+        width: 635
+        height: 620
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
