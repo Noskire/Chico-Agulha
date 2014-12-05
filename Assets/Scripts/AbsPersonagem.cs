@@ -4,16 +4,11 @@ using System.Collections;
 
 public abstract class AbsPersonagem : MonoBehaviour {
 
-    public float maxSpeed;
-    public float maxImpulse;
-    public float gravity;
-    public Animator animator;
-    public int eixoX;
-    public int eixoY;
-    public float impulso;
     public float velocidade;
-    public float yInicial;
+    public Animator animator;
+    public Transform ground; //solo
     public int hp;
+    public int hpMax;
 
 
     
@@ -27,7 +22,10 @@ public abstract class AbsPersonagem : MonoBehaviour {
     public abstract void Pular();
 
 	// Use this for initialization
-    public virtual void Start(){}
+    public virtual void Start(){
+        this.animator = this.gameObject.GetComponentInChildren<Animator>();
+        this.ground = this.gameObject.GetComponentInChildren<Transform>();
+    }
 	
 	// Update is called once per frame
     public virtual void Update() {}
