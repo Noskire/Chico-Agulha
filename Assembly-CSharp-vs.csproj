@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{B7DA2126-231A-653E-6F93-CB9C843526CD}</ProjectGuid>
+	<ProjectGuid>{CAAC0216-79B2-49D4-4C79-3C8C5D2F1391}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -51,9 +51,12 @@
      <Compile Include="Assets\scripts\AbsPersonagem.cs" />
      <Compile Include="Assets\scripts\Camera.cs" />
      <Compile Include="Assets\scripts\EnumEstado.cs" />
+     <Compile Include="Assets\scripts\InstanciadorMapa.cs" />
      <Compile Include="Assets\scripts\ItemLife.cs" />
      <Compile Include="Assets\scripts\ItemMana.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
+     <None Include="Assets\Mapas\Mapa1.txt" />
+     <None Include="Assets\cenas\Mapa1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

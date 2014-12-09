@@ -102,7 +102,7 @@ public class Player:AbsPersonagem
         base.Start();
         this.jumping = false;
         this.jumpTime = 0.0f;
-        this.jumpDelay = 0.8f;
+        this.jumpDelay = 0.3f;
         this.isGrounded = true;
         this.force = 200f;
         this.gameObject.tag = "Player";

@@ -18,7 +18,7 @@ public class Camera : MonoBehaviour {
 
         Vector2 novaposicao = Vector2.zero;
         novaposicao.x = Mathf.SmoothDamp(this.transform.position.x, this.player.position.x, ref this.velociade.x, suavisacaoCamera);
-        novaposicao.y = Mathf.SmoothDamp(this.transform.position.y, this.player.position.y + 4, ref this.velociade.y, suavisacaoCamera);
+        novaposicao.y = Mathf.SmoothDamp(this.transform.position.y, this.player.position.y + 3.8f, ref this.velociade.y, suavisacaoCamera);
 
         Vector3 novaposicaoCamera = new Vector3(novaposicao.x, novaposicao.y, this.transform.position.z);
 
