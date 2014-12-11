@@ -7,6 +7,7 @@ using System;
 public class InstanciadorMapa : MonoBehaviour {
 
     public GameObject[] objetos;
+    public GameObject[] cliparts;
     public TextAsset mapa;
     private const float tilePositionX_Inicial = -6.3f;
     private float tilePositionY = 4.5f;
@@ -46,6 +47,11 @@ public class InstanciadorMapa : MonoBehaviour {
                         break;
                     case '.':
                         tilePositionX += objetos[0].collider2D.bounds.size.x + 0.7f;
+                        break;
+                    case 'P':
+                        int indice = UnityEngine.Random.Range(0,cliparts.Length);
+                        Instantiate(cliparts[indice], new Vector3(tilePositionX, tilePositionY, tilePositionZ), objetos[1].transform.rotation);
+                        tilePositionX += objetos[1].collider2D.bounds.size.x + 0.7f;
                         break;
                     default:
                         tilePositionX = tilePositionX_Inicial;
