@@ -1,6 +1,16 @@
 fileFormatVersion: 2
 guid: 68ae7cece8e323446b69ee065cf5ebb4
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hit - Dead_0
+    21300002: Hit - Dead_1
+    21300004: Hit - Dead_2
+    21300006: Hit - Dead_3
+    21300008: Hit - Dead_4
+    21300010: Hit - Dead_5
+    21300012: Hit - Dead_6
+    21300014: Hit - Dead_7
+    21300016: Hit - Dead_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

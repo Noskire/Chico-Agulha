@@ -9,7 +9,7 @@ public abstract class AbsItem : MonoBehaviour
     public GameObject gameObejectColisor;
     private float tempoVida;
     public float tempoMax;
-    public AudioClip audio;
+    //public AudioClip audio;
 
     public abstract void ExecutarEfeito();
 

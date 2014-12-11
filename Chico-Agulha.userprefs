@@ -1,11 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy01.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
     <Files>
-      <File FileName="..\..\..\..\Public\Documents\Unity Projects\Algoritmos\Assets\Scripts\Anagramas.cs" Line="9" Column="43" />
-      <File FileName="Assets\Scripts\AbsPlayer.cs" Line="132" Column="4" />
-      <File FileName="Assets\Scripts\Enemy01.cs" Line="46" Column="4" />
-      <File FileName="Assets\Scripts\Player.cs" Line="93" Column="1" />
+      <File FileName="Assets\Scripts\Player.cs" Line="169" Column="1" />
+      <File FileName="Assets\Scripts\AbsPersonagem.cs" Line="7" Column="28" />
+      <File FileName="Assets\Scripts\MainMenu.cs" Line="34" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

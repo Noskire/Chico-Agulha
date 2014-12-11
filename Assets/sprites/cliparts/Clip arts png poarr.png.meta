@@ -1,6 +1,19 @@
 fileFormatVersion: 2
 guid: ea83dec86766d134e85b8a677dbfd1e4
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Clip arts png poarr_0
+    21300002: Clip arts png poarr_1
+    21300004: Clip arts png poarr_2
+    21300006: Clip arts png poarr_3
+    21300008: Clip arts png poarr_4
+    21300010: Clip arts png poarr_5
+    21300012: Clip arts png poarr_6
+    21300014: Clip arts png poarr_7
+    21300016: Clip arts png poarr_8
+    21300018: Clip arts png poarr_9
+    21300020: Clip arts png poarr_10
+    21300022: Clip arts png poarr_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

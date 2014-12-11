@@ -2,27 +2,22 @@
 using System.Collections;
 
 public class Camera : MonoBehaviour {
-
-    public Transform player;
-    public float suavisacaoCamera = 0.5f;
-    public Vector2 velociade;
-
-	// Use this for initialization
+	public GameObject target;
+	public Vector2 boundary; //Limits of the camera (Left, Right)
+	public float targetX; //Current coordinate x of target
+	
 	void Start () {
-        this.velociade = new Vector2(0.5f,0.5f);
-	    
+		target = GameObject.FindGameObjectWithTag("Player");
 	}
 	
-	// Update is called once per frame
 	void Update () {
-
-        Vector2 novaposicao = Vector2.zero;
-        novaposicao.x = Mathf.SmoothDamp(this.transform.position.x, this.player.position.x, ref this.velociade.x, suavisacaoCamera);
-        novaposicao.y = Mathf.SmoothDamp(this.transform.position.y, this.player.position.y + 3.8f, ref this.velociade.y, suavisacaoCamera);
-
-        Vector3 novaposicaoCamera = new Vector3(novaposicao.x, novaposicao.y, this.transform.position.z);
-
-        this.transform.position = Vector3.Slerp(this.transform.position,novaposicaoCamera,Time.time);
-
+		targetX = target.transform.position.x;
+		if(targetX < boundary.x){ //The camera can no longer go to the left
+			transform.localPosition = new Vector3(boundary.x, 0, -10);
+		}else if(targetX > boundary.y){ //The camera can no longer go to the right
+			transform.localPosition = new Vector3(boundary.y, 0, -10);
+		}else{ //Follow target
+			transform.localPosition = new Vector3(targetX, 0, -10);
+		}
 	}
 }
